@@ -8,7 +8,7 @@
   <meta name="description" content="Herramientas gratuitas de Product Management: prioriza, explora oportunidades y alinea equipos con ejemplos prácticos. Sin registro." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Laboratorio de Producto | Estrategia que se convierte en producto" />
-  <meta property="og:description" content="Prioriza, conecta oportunidades y alinea decisiones con cinco herramientas prácticas para Product Managers y Product Owners." />
+  <meta property="og:description" content="Prioriza, conecta oportunidades y alinea decisiones con cinco herramientas y un evaluador económico para Product Managers y Product Owners." />
   <title>Laboratorio de Producto · Estrategia que se convierte en producto</title>
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNSIgZmlsbD0iIzA4MWYzNSIvPjxwYXRoIGQ9Ik0xOSA0NFYxOWgxMmM4IDAgMTMgNCAxMyAxMXMtNSAxMS0xMyAxMWgtNXYzIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNzdkNjAiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTQ2IDE0IDMwIDUwIiBzdHJva2U9IiNmOGYyZWEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+Cg==" type="image/svg+xml" />
   <style>
@@ -104,6 +104,21 @@ body{font-family:Inter,'Segoe UI',Arial,sans-serif}
 @media(max-width:900px){.nav-link{display:none}.desktop-nav{margin-left:auto}}
 @media(max-width:800px){.decision-layout{grid-template-columns:1fr}.decision-heading{align-items:start;flex-direction:column}.creator-panel{flex-direction:column;align-items:start}.creator-actions{flex-direction:row;min-width:0}}
 @media(max-width:600px){.decision-section{padding:65px 0}.decision-context,.decision-workspace{padding:22px}.decision-facts{grid-template-columns:1fr}.decision-facts div{padding:11px 12px}.feedback-grid{grid-template-columns:1fr}.creator-actions{flex-direction:column;width:100%}.footer-content{flex-direction:column;align-items:start}.footer-links{flex-direction:column;gap:11px}.decision-heading h2,.creator-panel h2{letter-spacing:-.8px}}
+
+/* Incremental I1 - Business Case Express */
+.bc-section{padding:96px 0;background:radial-gradient(circle at 85% 8%,#22245c 0%,transparent 43%),linear-gradient(145deg,#08162c 10%,#171536 70%,#071528 100%);color:#f9f6f2}
+.bc-section .bc-top{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:32px}
+.bc-section h2{font-size:clamp(35px,5.2vw,67px);line-height:1.06;letter-spacing:-.045em;margin:14px 0;color:#fff}
+.bc-section h2 em{color:#ff8d72;font-style:normal}
+.bc-section .bc-desc{max-width:420px;color:#c5c7d4;line-height:1.7}
+.bc-shell{background:#0b1830;border:1px solid #3d4865;border-radius:24px;display:grid;grid-template-columns:minmax(260px,1fr) minmax(320px,1.1fr);overflow:hidden;box-shadow:0 32px 90px #0005}
+.bc-inputs{padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:19px;background:#121d39}
+.bc-inputs label{display:flex;flex-direction:column;gap:9px;font-size:13px;color:#e2e2eb;font-weight:650}
+.bc-inputs input{width:100%;min-width:0;box-sizing:border-box;background:#07152e;color:white;border:1px solid #4d5b77;border-radius:10px;padding:12px;font-size:16px;font-variant-numeric:tabular-nums}
+.bc-inputs .wide{grid-column:1/-1}.bc-outputs{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:21px}
+.bc-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.bc-stat{background:#151f3b;border:1px solid #35435e;border-radius:13px;padding:19px}.bc-stat span{display:block;font-size:13px;color:#c0c4d0}.bc-stat strong{font-size:clamp(20px,2.5vw,32px);display:block;margin-top:7px;color:#fff;font-variant-numeric:tabular-nums}.bc-stat strong.positive{color:#5bd9be}.bc-stat strong.negative{color:#ffa48f}
+.bc-disclaimer{font-size:13px;color:#c3c5d3;line-height:1.55}.bc-actions{display:flex;gap:12px;flex-wrap:wrap}.bc-actions button{border-radius:12px;padding:11px 18px;cursor:pointer;background:#ff8467;color:#132035;font-weight:700;border:0}.bc-actions button.secondary{background:#23304d;color:#fff}.bc-status{color:#a4d5c7;font-size:13px;min-height:18px}
+@media(max-width:850px){.bc-shell{grid-template-columns:1fr}.bc-section .bc-top{display:block}.bc-section{padding:66px 0}}@media(max-width:420px){.bc-inputs,.bc-outputs{padding:20px}.bc-stats{grid-template-columns:1fr}}
 </style>
   <script defer>
 'use strict';
@@ -274,6 +289,20 @@ document.addEventListener('DOMContentLoaded',initDecisionRoom);
     <section class="section method-section" id="metodo"><div class="wrap method-layout"><div><p class="eyebrow light">02 / EL MÉTODO</p><h2>No necesitas<br />más frameworks.<br /><em>Necesitas criterio.</em></h2></div><div class="method-steps"><div><span>01</span><div><h3>Define la decisión</h3><p>Escribe qué debe decidir el equipo, con qué información y antes de qué fecha.</p></div></div><div><span>02</span><div><h3>Aplica una práctica</h3><p>Usa un método concreto y registra supuestos, participantes y resultados.</p></div></div><div><span>03</span><div><h3>Comprueba el efecto</h3><p>Contrasta la decisión con métricas de negocio y aprendizaje de clientes.</p></div></div></div></div></section>
     <section class="section who-section" id="quienes"><div class="wrap"><p class="eyebrow dark">03 / A QUIÉN LE SIRVE</p><div class="who-layout"><h2>Para personas que<br /><em>hacen que pase.</em></h2><div class="personas"><article><span>PM</span><h3>Product Managers</h3><p>Ordena oportunidades, explica trade-offs y conecta resultados con estrategia.</p></article><article><span>PO</span><h3>Product Owners</h3><p>Convierte demandas dispersas en un backlog priorizado y entendible.</p></article><article><span>EQ</span><h3>Equipos y stakeholders</h3><p>Haz visibles los acuerdos, responsables y criterios para decidir juntos.</p></article></div></div></div></section>
 
+
+<section class="bc-section" id="caso-de-negocio" aria-labelledby="bc-title"><div class="wrap">
+ <div class="bc-top"><div><p class="eyebrow light">NUEVA HERRAMIENTA · VIABILIDAD ECONÓMICA</p><h2 id="bc-title">El valor de producto<br><em>también se cuantifica.</em></h2></div><p class="bc-desc">Antes de comprometer un roadmap, contrasta inversión, beneficios e incertidumbre. Explora un caso financiero con supuestos editables y conversaciones basadas en escenarios.</p></div>
+ <div class="bc-shell"><form id="bc-form" class="bc-inputs" aria-label="Supuestos para evaluar una iniciativa">
+  <label>Inversión inicial (millones CLP)<input id="bc-invest" inputmode="decimal" type="number" min="0" max="1000000" step="1" value="120" required></label>
+  <label>Ingreso incremental mensual (millones CLP)<input id="bc-revenue" inputmode="decimal" type="number" min="0" max="1000000" step="0.1" value="24" required></label>
+  <label>Margen de contribución (%)<input id="bc-margin" inputmode="decimal" type="number" min="0" max="100" step="1" value="55" required></label>
+  <label>Costo operativo adicional mensual (millones CLP)<input id="bc-cost" inputmode="decimal" type="number" min="0" max="1000000" step="0.1" value="3" required></label>
+  <label>Horizonte (meses)<input id="bc-months" inputmode="numeric" type="number" min="1" max="120" step="1" value="18" required></label>
+  <label>Factor de realización del beneficio (%)<input id="bc-realization" inputmode="decimal" type="number" min="0" max="100" step="5" value="75" required></label>
+  <p class="wide bc-disclaimer">Ejemplo ilustrativo con cifras hipotéticas. No representa resultados ni proyecciones de productos donde haya trabajado Pedro.</p>
+ </form>
+ <div class="bc-outputs"><p class="eyebrow light">RESULTADO DEL ESCENARIO</p><div class="bc-stats"><div class="bc-stat"><span>Beneficio neto mensual estimado</span><strong id="bc-net">—</strong></div><div class="bc-stat"><span>Recuperación de inversión</span><strong id="bc-payback">—</strong></div><div class="bc-stat"><span>Valor neto a horizonte</span><strong id="bc-value">—</strong></div><div class="bc-stat"><span>Retorno simple del período</span><strong id="bc-roi">—</strong></div></div><p id="bc-interpretation" class="bc-disclaimer" aria-live="polite"></p><div class="bc-actions"><button type="button" id="bc-export">Exportar evaluación ↓</button><button type="button" class="secondary" id="bc-reset">Restablecer ejemplo</button></div><span id="bc-message" class="bc-status" role="status"></span><p class="bc-disclaimer">No considera impuestos, costo de capital, canibalización ni valor del dinero en el tiempo. El retorno es simple, no VAN/TIR. Usar solo para explorar hipótesis y validar posteriormente con Finanzas.</p></div></div>
+</div></section>
 <section class="decision-section section" id="sala-de-decisiones" aria-labelledby="decision-title">
   <div class="wrap">
     <div class="decision-heading"><div><p class="eyebrow light">NUEVO · SIMULADOR DE CRITERIO</p><h2 id="decision-title">Sala de <em>Decisiones.</em></h2><p>La mejor decisión no siempre es la que parece más urgente. Explora un escenario, elige un camino y contrasta los trade-offs.</p></div><span class="decision-chip">CASO 01 / FINTECH</span></div>
@@ -299,5 +328,39 @@ document.addEventListener('DOMContentLoaded',initDecisionRoom);
   </main>
   <footer class="footer"><div class="wrap footer-content"><span>PRODUCTO<span class="brand-dot">.</span> LABORATORIO</span><span>Una iniciativa impulsada por Pedro Navarrete · 2026</span><div class="footer-links"><a href="https://pedro-navarrete-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">Conóceme ↗</a><a href="mailto:pedro18@gmail.com?subject=Conversemos%20sobre%20productos">Conversemos ✉</a></div></div></footer>
   <dialog id="guide-dialog" aria-labelledby="guide-title"><div class="dialog-shell"><div class="dialog-top"><span>GUÍA PRÁCTICA <span id="guide-index"></span></span><button id="close-guide" class="close-dialog" type="button" aria-label="Cerrar guía">×</button></div><div class="dialog-scroll"><div class="guide-header"><div id="guide-category" class="guide-category"></div><h2 id="guide-title"></h2><p id="guide-summary"></p><div class="guide-summary"><span id="guide-time"></span><span>Aplicación inmediata</span><span>Ejemplo hipotético</span></div></div><div class="guide-grid"><article class="guide-notes"><div class="guide-section"><h3>Cuándo usarla</h3><p id="guide-when"></p></div><div class="guide-section"><h3>Cómo aplicarla</h3><ol id="guide-steps"></ol></div><div class="guide-section"><h3>Ejemplo financiero</h3><p id="guide-example"></p></div><div class="guide-section caution"><h3>Lo que debes evitar</h3><p id="guide-warning"></p></div></article><div class="workspace"><div class="workspace-head"><div><p>ÁREA DE TRABAJO</p><h3>Construye tu resultado</h3></div><span class="live-tag">INTERACTIVO</span></div><div id="tool-content"></div><div class="tool-actions"><button class="button primary small" id="export-data" type="button">Exportar resultado ↓</button><button class="button outline small" id="import-data" type="button">Importar JSON ↑</button><input id="import-file" type="file" accept=".json,application/json" hidden aria-label="Seleccionar resultado JSON guardado"/><button class="button outline small" id="reset-tool" type="button">Reiniciar ejemplo</button></div><div class="save-note" id="tool-message" aria-live="polite">Los datos se procesan en tu navegador.</div></div></div></div></div></dialog>
+<script>
+
+/* Incremental I1: business-case quick evaluator. Original implementation, no external analytics. */
+(function(){
+ const keys=['invest','revenue','margin','cost','months','realization'];
+ const defaults=[120,24,55,3,18,75];
+ const ids=keys.map(k=>document.getElementById('bc-'+k));
+ if(ids.some(el=>!el))return;
+ let model={};
+ const storage='pedro-lab-business-case-v1';
+ const read=()=>keys.forEach((k,i)=>model[k]=Number(ids[i].value));
+ const fmt=(n)=>Number.isFinite(n)?new Intl.NumberFormat('es-CL',{maximumFractionDigits:1}).format(n):'—';
+ const value=(id,v,positive)=>{const e=document.getElementById(id);e.textContent=v;e.classList.toggle('positive',positive===true);e.classList.toggle('negative',positive===false)};
+ const valid=()=>ids.every((e)=>e.checkValidity() && e.value.trim()!=='' && Number.isFinite(e.valueAsNumber));
+ function calculate(){read();const message=document.getElementById('bc-message');message.textContent='';if(!valid()){['bc-net','bc-payback','bc-value','bc-roi'].forEach(id=>value(id,'Revisar'));document.getElementById('bc-interpretation').textContent='Revisa los valores: no se permiten campos vacíos ni rangos inválidos.';return;}
+ const benefit=model.revenue*(model.margin/100)*(model.realization/100)-model.cost;
+ const total=benefit*model.months-model.invest;
+ const payback=benefit>0?model.invest/benefit:null;
+ const roi=model.invest>0?100*total/model.invest:null;
+ value('bc-net',fmt(benefit)+' MM',benefit>0);
+ value('bc-payback',payback===null?'No recupera':fmt(payback)+' meses',payback!==null&&payback<=model.months);
+ value('bc-value',fmt(total)+' MM',total>=0);
+ value('bc-roi',roi===null?'No aplica':fmt(roi)+' %',roi!==null&&roi>=0);
+ document.getElementById('bc-interpretation').textContent=benefit<=0?'El beneficio mensual estimado no cubre el costo operativo adicional. Revisar hipótesis antes de priorizar.':payback>model.months?'La inversión no se recuperaría dentro del horizonte indicado. Comparar alternativas y sensibilidad.':'El escenario muestra recuperación dentro del horizonte; valida adopción, costos y riesgos antes de comprometer la iniciativa.';
+ try{localStorage.setItem(storage,JSON.stringify(model))}catch(e){}
+ }
+ ids.forEach(el=>el.addEventListener('input',calculate));
+ document.getElementById('bc-reset').addEventListener('click',()=>{ids.forEach((e,i)=>e.value=defaults[i]);calculate()});
+ document.getElementById('bc-export').addEventListener('click',()=>{if(!valid())return; const blob=new Blob([JSON.stringify({tipo:'escenario-hipotetico',herramienta:'business-case-express',moneda:'millones CLP',supuestos:model,nota:'Ejemplo ilustrativo. No son resultados reales.'},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='evaluacion-iniciativa-ejemplo.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('bc-message').textContent='Archivo descargado con tus supuestos.'});
+ try{const prior=JSON.parse(localStorage.getItem(storage)); if(prior&&keys.every(k=>Number.isFinite(prior[k])))ids.forEach((e,i)=>{const v=prior[keys[i]];if(v>=Number(e.min)&&v<=Number(e.max))e.value=v})}catch(e){}
+ calculate();
+})();
+
+</script>
 </body>
 </html>
