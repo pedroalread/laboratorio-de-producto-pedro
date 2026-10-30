@@ -1,0 +1,33 @@
+name: QA individual - cinco herramientas
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'qa/qa_cinco_herramientas.py'
+      - '.github/workflows/qa-cinco-herramientas.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pruebas-por-herramienta:
+    name: Probar interacciones en produccion
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - name: Ejecutar pruebas individuales en URL publica
+        env:
+          PORTAL_URL: https://pedroalread.github.io/laboratorio-de-producto-pedro/
+        run: python qa/qa_cinco_herramientas.py
+      - name: Guardar informe
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-cinco-herramientas
+          path: qa/resultado-cinco-herramientas.json
+          if-no-files-found: ignore
