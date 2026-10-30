@@ -1,0 +1,26 @@
+name: QA evaluador de negocio
+on:
+  push:
+    paths: ['qa/qa_roi.py','.github/workflows/qa-roi.yml','index.html']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - name: Ejecutar calculadora en URL pública
+        run: python qa/qa_roi.py
+      - name: Evidencia
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roi-produccion
+          path: qa/roi-*.png
