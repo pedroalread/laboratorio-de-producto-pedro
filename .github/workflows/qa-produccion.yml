@@ -1,0 +1,36 @@
+name: QA produccion - Laboratorio PO
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - '.github/workflows/qa-produccion.yml'
+      - 'qa/qa_produccion.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  playwright:
+    name: Pruebas funcionales en URL publica
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - name: Ejecutar QA real en GitHub Pages
+        env:
+          PORTAL_URL: https://pedroalread.github.io/laboratorio-de-producto-pedro/
+        run: python qa/qa_produccion.py
+      - name: Guardar capturas y resultados
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidencia-produccion
+          path: |
+            qa/screenshots/
+            qa/resultado-produccion.json
+          if-no-files-found: ignore
