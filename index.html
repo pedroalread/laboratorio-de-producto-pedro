@@ -218,6 +218,19 @@ function initDecisionRoom(){
 }
 document.addEventListener('DOMContentLoaded',initDecisionRoom);
 </script>
+<script id="migracion-laboratorio-a-vercel">
+(function(){
+  if (window.location.hostname !== 'pedroalread.github.io') return;
+  var params = new URLSearchParams(window.location.search);
+  if (params.has('legacy')) return;
+  var target = new URL('https://laboratorio-de-producto-pedro.vercel.app/');
+  params.delete('legacy');
+  target.search = params.toString();
+  target.hash = window.location.hash;
+  window.location.replace(target.href);
+})();
+</script>
+<link rel="canonical" href="https://laboratorio-de-producto-pedro.vercel.app/">
 </head>
 <body>
   <a class="skip" href="#biblioteca">Saltar a las herramientas</a>
